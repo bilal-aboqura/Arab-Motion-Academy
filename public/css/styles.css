@@ -740,6 +740,18 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 10px rgba(15, 205, 241, 0.25)) drop-shadow(0 0 20px rgba(0, 134, 225, 0.2));
+    animation: headlineGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes headlineGlow {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(15, 205, 241, 0.2)) drop-shadow(0 0 20px rgba(0, 134, 225, 0.15));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 15px rgba(15, 205, 241, 0.35)) drop-shadow(0 0 30px rgba(0, 134, 225, 0.25));
+    }
 }
 
 .hero-subheadline {
