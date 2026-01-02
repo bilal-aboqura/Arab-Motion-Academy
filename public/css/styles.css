@@ -2010,3 +2010,217 @@ footer {
     color: #EF4444;
     font-weight: bold;
 }
+
+/* ==========================================================================
+   4K Screens - Larger Content
+   ========================================================================== */
+@media (min-width: 2560px) {
+
+    /* Base font size increase */
+    html {
+        font-size: 120%;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 180px 60px 120px;
+    }
+
+    .hero-wrapper {
+        max-width: 2000px;
+        gap: 100px;
+    }
+
+    .hero-headline {
+        font-size: 4.5rem;
+    }
+
+    .hero-subheadline {
+        font-size: 1.8rem;
+    }
+
+    .hero-description {
+        font-size: 1.4rem;
+    }
+
+    .hero-badge {
+        font-size: 1.2rem;
+        padding: 14px 32px;
+    }
+
+    .hero-badge-container {
+        top: 160px;
+    }
+
+    /* Navbar */
+    .floating-navbar {
+        padding: 16px 40px;
+        gap: 30px;
+    }
+
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+
+    .navbar-cta {
+        padding: 14px 32px;
+        font-size: 1.1rem;
+    }
+
+    .countdown-item {
+        padding: 10px 16px;
+        min-width: 60px;
+    }
+
+    .countdown-value {
+        font-size: 1.3rem;
+    }
+
+    .countdown-unit {
+        font-size: 0.8rem;
+    }
+
+    /* Sections */
+    .section {
+        padding: 120px 60px;
+    }
+
+    .section-title {
+        font-size: 3.2rem;
+        margin-bottom: 24px;
+    }
+
+    .section-subtitle {
+        font-size: 1.4rem;
+    }
+
+    /* Buttons */
+    .btn-primary,
+    .btn-secondary,
+    .btn-cta {
+        padding: 22px 48px;
+        font-size: 1.3rem;
+        border-radius: 18px;
+    }
+
+    .btn-subtext {
+        font-size: 1rem;
+    }
+
+    /* Cards & Containers */
+    .comparison-card,
+    .benefit-item,
+    .guarantee-card,
+    .final-cta-content {
+        padding: 50px;
+        border-radius: 30px;
+    }
+
+    .stats-container {
+        padding: 50px 60px;
+        border-radius: 30px;
+    }
+
+    .stat-value {
+        font-size: 3.5rem;
+    }
+
+    .stat-label {
+        font-size: 1.3rem;
+    }
+
+    /* Video Showcase */
+    .video-grid {
+        gap: 30px;
+    }
+
+    /* Benefits */
+    .benefit-title {
+        font-size: 1.4rem;
+    }
+
+    .benefit-text {
+        font-size: 1.1rem;
+    }
+
+    /* Comparison */
+    .comparison-title {
+        font-size: 1.6rem;
+    }
+
+    .comparison-list li {
+        font-size: 1.15rem;
+        padding: 16px 0;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+        padding: 40px;
+    }
+
+    .testimonial-text {
+        font-size: 1.2rem;
+    }
+
+    .testimonial-author strong {
+        font-size: 1.2rem;
+    }
+
+    /* Final CTA */
+    .final-cta-title {
+        font-size: 2.8rem;
+    }
+
+    .final-cta-subtitle {
+        font-size: 1.4rem;
+    }
+
+    /* Guarantee */
+    .guarantee-title {
+        font-size: 1.8rem;
+    }
+
+    .guarantee-text {
+        font-size: 1.2rem;
+    }
+
+    /* Price */
+    .price-current {
+        font-size: 4.5rem;
+    }
+
+    .price-original {
+        font-size: 2rem;
+    }
+
+    /* Footer */
+    .footer-text {
+        font-size: 1.1rem;
+    }
+
+    /* Hero Features */
+    .hero-features li {
+        font-size: 1.15rem;
+    }
+
+    /* Grid Overlay */
+    .grid-overlay {
+        background-size: 120px 120px;
+    }
+
+    /* Glow Orbs - Bigger for 4K */
+    .glow-orb-1 {
+        width: 1200px;
+        height: 1200px;
+    }
+
+    .glow-orb-2 {
+        width: 900px;
+        height: 900px;
+    }
+
+    .glow-orb-3 {
+        width: 750px;
+        height: 750px;
+    }
+}
