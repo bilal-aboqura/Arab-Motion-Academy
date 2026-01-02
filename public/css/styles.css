@@ -2012,99 +2012,99 @@ footer {
 }
 
 /* ==========================================================================
-   4K Screens - Larger Content
+   4K Screens (2560px) - Larger Content
    ========================================================================== */
 @media (min-width: 2560px) {
 
-    /* Base font size increase */
+    /* Base font size increase - 150% */
     html {
-        font-size: 120%;
+        font-size: 150%;
     }
 
     /* Hero Section */
     .hero {
-        padding: 180px 60px 120px;
+        padding: 220px 100px 150px;
     }
 
     .hero-wrapper {
-        max-width: 2000px;
-        gap: 100px;
+        max-width: 2400px;
+        gap: 120px;
     }
 
     .hero-headline {
-        font-size: 4.5rem;
+        font-size: 5.5rem;
     }
 
     .hero-subheadline {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 
     .hero-description {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
 
     .hero-badge {
-        font-size: 1.2rem;
-        padding: 14px 32px;
+        font-size: 1.4rem;
+        padding: 18px 40px;
     }
 
     .hero-badge-container {
-        top: 160px;
+        top: 180px;
     }
 
     /* Navbar */
     .floating-navbar {
-        padding: 16px 40px;
-        gap: 30px;
+        padding: 20px 50px;
+        gap: 40px;
     }
 
     .navbar-brand {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
 
     .navbar-cta {
-        padding: 14px 32px;
-        font-size: 1.1rem;
-    }
-
-    .countdown-item {
-        padding: 10px 16px;
-        min-width: 60px;
-    }
-
-    .countdown-value {
+        padding: 18px 40px;
         font-size: 1.3rem;
     }
 
+    .countdown-item {
+        padding: 14px 20px;
+        min-width: 80px;
+    }
+
+    .countdown-value {
+        font-size: 1.6rem;
+    }
+
     .countdown-unit {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     /* Sections */
     .section {
-        padding: 120px 60px;
+        padding: 150px 100px;
     }
 
     .section-title {
-        font-size: 3.2rem;
-        margin-bottom: 24px;
+        font-size: 4rem;
+        margin-bottom: 32px;
     }
 
     .section-subtitle {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
 
     /* Buttons */
     .btn-primary,
     .btn-secondary,
     .btn-cta {
-        padding: 22px 48px;
-        font-size: 1.3rem;
-        border-radius: 18px;
+        padding: 28px 60px;
+        font-size: 1.6rem;
+        border-radius: 20px;
     }
 
     .btn-subtext {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     /* Cards & Containers */
@@ -2112,115 +2112,342 @@ footer {
     .benefit-item,
     .guarantee-card,
     .final-cta-content {
-        padding: 50px;
-        border-radius: 30px;
+        padding: 60px;
+        border-radius: 36px;
     }
 
     .stats-container {
-        padding: 50px 60px;
-        border-radius: 30px;
+        padding: 60px 80px;
+        border-radius: 36px;
     }
 
     .stat-value {
-        font-size: 3.5rem;
+        font-size: 4.5rem;
     }
 
     .stat-label {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
 
     /* Video Showcase */
     .video-grid {
-        gap: 30px;
+        gap: 40px;
     }
 
     /* Benefits */
+    .benefit-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+
     .benefit-title {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
 
     .benefit-text {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
 
     /* Comparison */
     .comparison-title {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     .comparison-list li {
-        font-size: 1.15rem;
-        padding: 16px 0;
+        font-size: 1.4rem;
+        padding: 20px 0;
     }
 
     /* Testimonials */
     .testimonial-card {
-        padding: 40px;
+        padding: 50px;
     }
 
     .testimonial-text {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .testimonial-author strong {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     /* Final CTA */
     .final-cta-title {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
     }
 
     .final-cta-subtitle {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
 
     /* Guarantee */
     .guarantee-title {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 
     .guarantee-text {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     /* Price */
     .price-current {
-        font-size: 4.5rem;
+        font-size: 6rem;
     }
 
     .price-original {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     /* Footer */
     .footer-text {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     /* Hero Features */
     .hero-features li {
-        font-size: 1.15rem;
+        font-size: 1.4rem;
     }
 
     /* Grid Overlay */
     .grid-overlay {
-        background-size: 120px 120px;
+        background-size: 150px 150px;
     }
 
     /* Glow Orbs - Bigger for 4K */
     .glow-orb-1 {
-        width: 1200px;
-        height: 1200px;
+        width: 1400px;
+        height: 1400px;
     }
 
     .glow-orb-2 {
-        width: 900px;
-        height: 900px;
+        width: 1100px;
+        height: 1100px;
     }
 
     .glow-orb-3 {
-        width: 750px;
-        height: 750px;
+        width: 900px;
+        height: 900px;
+    }
+}
+
+/* ==========================================================================
+   Ultra 4K Screens (3840px) - Even Larger Content
+   ========================================================================== */
+@media (min-width: 3840px) {
+
+    /* Base font size increase - 200% */
+    html {
+        font-size: 200%;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 300px 150px 200px;
+    }
+
+    .hero-wrapper {
+        max-width: 3200px;
+        gap: 180px;
+    }
+
+    .hero-headline {
+        font-size: 7rem;
+    }
+
+    .hero-subheadline {
+        font-size: 2.8rem;
+    }
+
+    .hero-description {
+        font-size: 2rem;
+    }
+
+    .hero-badge {
+        font-size: 1.8rem;
+        padding: 24px 50px;
+    }
+
+    .hero-badge-container {
+        top: 220px;
+    }
+
+    /* Navbar */
+    .floating-navbar {
+        padding: 28px 70px;
+        gap: 50px;
+        top: 30px;
+    }
+
+    .navbar-brand {
+        font-size: 2.2rem;
+    }
+
+    .navbar-cta {
+        padding: 24px 50px;
+        font-size: 1.6rem;
+    }
+
+    .countdown-item {
+        padding: 18px 28px;
+        min-width: 100px;
+    }
+
+    .countdown-value {
+        font-size: 2rem;
+    }
+
+    .countdown-unit {
+        font-size: 1.2rem;
+    }
+
+    /* Sections */
+    .section {
+        padding: 200px 150px;
+    }
+
+    .section-title {
+        font-size: 5rem;
+        margin-bottom: 40px;
+    }
+
+    .section-subtitle {
+        font-size: 2.2rem;
+    }
+
+    /* Buttons */
+    .btn-primary,
+    .btn-secondary,
+    .btn-cta {
+        padding: 36px 80px;
+        font-size: 2rem;
+        border-radius: 24px;
+    }
+
+    .btn-subtext {
+        font-size: 1.5rem;
+    }
+
+    /* Cards & Containers */
+    .comparison-card,
+    .benefit-item,
+    .guarantee-card,
+    .final-cta-content {
+        padding: 80px;
+        border-radius: 48px;
+    }
+
+    .stats-container {
+        padding: 80px 100px;
+        border-radius: 48px;
+    }
+
+    .stat-value {
+        font-size: 6rem;
+    }
+
+    .stat-label {
+        font-size: 2rem;
+    }
+
+    /* Video Showcase */
+    .video-grid {
+        gap: 60px;
+    }
+
+    /* Benefits */
+    .benefit-icon {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+    }
+
+    .benefit-title {
+        font-size: 2.2rem;
+    }
+
+    .benefit-text {
+        font-size: 1.8rem;
+    }
+
+    /* Comparison */
+    .comparison-title {
+        font-size: 2.5rem;
+    }
+
+    .comparison-list li {
+        font-size: 1.8rem;
+        padding: 24px 0;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+        padding: 70px;
+    }
+
+    .testimonial-text {
+        font-size: 1.8rem;
+    }
+
+    .testimonial-author strong {
+        font-size: 1.8rem;
+    }
+
+    /* Final CTA */
+    .final-cta-title {
+        font-size: 4.5rem;
+    }
+
+    .final-cta-subtitle {
+        font-size: 2.2rem;
+    }
+
+    /* Guarantee */
+    .guarantee-title {
+        font-size: 2.8rem;
+    }
+
+    .guarantee-text {
+        font-size: 1.8rem;
+    }
+
+    /* Price */
+    .price-current {
+        font-size: 8rem;
+    }
+
+    .price-original {
+        font-size: 3rem;
+    }
+
+    /* Footer */
+    .footer-text {
+        font-size: 1.6rem;
+    }
+
+    /* Hero Features */
+    .hero-features li {
+        font-size: 1.8rem;
+    }
+
+    /* Grid Overlay */
+    .grid-overlay {
+        background-size: 200px 200px;
+    }
+
+    /* Glow Orbs */
+    .glow-orb-1 {
+        width: 1800px;
+        height: 1800px;
+    }
+
+    .glow-orb-2 {
+        width: 1400px;
+        height: 1400px;
+    }
+
+    .glow-orb-3 {
+        width: 1100px;
+        height: 1100px;
     }
 }
