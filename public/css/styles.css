@@ -2236,9 +2236,9 @@ footer {
    ========================================================================== */
 @media (min-width: 3840px) {
 
-    /* Base font size increase - 160% */
+    /* Base font size increase - 130% */
     html {
-        font-size: 160%;
+        font-size: 130%;
     }
 
     /* Hero Section */
