@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="<%= data.site?.description || 'تعلم المونتاج من الصفر وابدأ العمل كمونتير محترف' %>">
+    <title>
+        <%= data.site?.title || 'Arab Motion Academy' %>
+    </title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F97316',
+                        secondary: '#EC4899',
+                        accent: '#8B5CF6',
+                        dark: '#0a0a0a'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Background System -->
+    <div class="liquid-background">
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <div class="vignette-overlay"></div>
+
+    <!-- Floating Pill Navbar -->
+    <nav class="floating-navbar">
+        <span class="navbar-brand">Arab Motion Academy</span>
+        <div class="navbar-divider"></div>
+        <div class="navbar-countdown">
+            <span class="countdown-label-text" id="discount-text">⏳ ينتهي خلال:</span>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-unit">ساعة</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-unit">دقيقة</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-unit">ثانية</span>
+                </div>
+            </div>
+        </div>
+        <a href="<%= data.hero?.ctaLink || '#pricing' %>" class="navbar-cta">احجز الآن</a>
+    </nav>
+
+    <!-- Hero Section - Two Column Layout -->
+    <section class="hero" id="hero">
+        <!-- Centered Badge - Below Navbar -->
+        <div class="hero-badge-container">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                <span>خصم <%= data.discount?.percentage || 50 %>% لأول <%= data.discount?.limitedSeats || 20 %>
+                            طالب</span>
+            </div>
+        </div>
+
+        <div class="hero-wrapper">
+            <!-- Right Column - Text Content -->
+            <div class="hero-content">
+                <!-- Mobile Countdown (visible only on mobile) -->
+                <div class="mobile-countdown">
+                    <span class="mobile-countdown-label">⏳ ينتهي العرض خلال</span>
+                    <div class="mobile-countdown-timer">
+                        <span class="mobile-countdown-value" id="mobile-hours">00</span>:<span
+                            class="mobile-countdown-value" id="mobile-minutes">00</span>:<span
+                            class="mobile-countdown-value" id="mobile-seconds">00</span>
+                    </div>
+                </div>
+
+                <h1 class="hero-headline">
+                    <span class="highlight">
+                        <%= data.hero?.headline || 'تعلم المونتاج من الصفر' %>
+                    </span>
+                </h1>
+                <h2 class="hero-subheadline">
+                    <%= data.hero?.subHeadline || 'وابدأ العمل كمونتير محترف خلال شهر واحد' %>
+                </h2>
+                <p class="hero-description">
+                    <%= data.hero?.description || 'كورس Arab Motion Academy من إسلام عبدالله' %>
+                </p>
+
+                <ul class="hero-features">
+                    <% if (data.hero?.features) { %>
+                        <% data.hero.features.forEach(function(feature) { %>
+                            <li>
+                                <%= feature %>
+                            </li>
+                            <% }); %>
+                                <% } else { %>
+                                    <li>أكثر من 10 سنوات خبرة</li>
+                                    <li>تعاونات مع أكبر الشركات العالمية</li>
+                                    <li>تعاونات مع أكبر المؤثرين في الوطن العربي</li>
+                                    <% } %>
+                </ul>
+
+                <div class="cta-group">
+                    <div class="cta-wrapper">
+                        <a href="<%= data.hero?.ctaLink || '#pricing' %>" class="btn-primary">
+                            🚀 <%= data.hero?.ctaText || 'احجز مكانك الآن' %>
+                        </a>
+                        <span class="btn-subtext">
+                            <%= data.hero?.ctaSubtext || 'يبدأ الاشتراك فور الدفع' %>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left Column - Video -->
+            <div class="hero-video">
+                <div class="hero-video-wrapper glass-card">
+                    <div class="spotlight"></div>
+                    <iframe src="<%= data.video?.videoUrl || 'https://www.youtube.com/embed/3zQcRtCe-xs' %>"
+                        title="Course Introduction"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="hero-video-title">🎥 <%= data.video?.title || 'ماذا ستتعلم داخل الكورس؟' %>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section class="stats-section section animate-on-scroll" id="stats">
+        <div class="stats-container glass-card">
+            <div class="spotlight"></div>
+            <div class="stats-number" id="student-counter">+0
+            </div>
+            <div class="stats-label">
+                <%= data.stats?.studentsText || 'طالب انضموا للكورس' %>
+            </div>
+            <div class="stats-subtitle">
+                <%= data.stats?.subtitle || 'وبدأوا رحلتهم الاحترافية' %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Comparison -->
+    <section class="comparison-section section animate-on-scroll" id="comparison">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🔄 الفرق الحقيقي</span>
+                <h2 class="section-title">قبل <span class="highlight">vs</span> بعد الكورس</h2>
+            </div>
+            <div class="comparison-grid">
+                <!-- Before Card -->
+                <div class="glass-card comparison-card before">
+                    <div class="spotlight"></div>
+                    <div class="comparison-icon">❌</div>
+                    <h3 class="comparison-title">
+                        <%= data.beforeAfter?.before?.title || 'قبل الكورس' %>
+                    </h3>
+                    <ul class="comparison-list">
+                        <% if (data.beforeAfter?.before?.points) { %>
+                            <% data.beforeAfter.before.points.forEach(function(point) { %>
+                                <li>
+                                    <%= point %>
+                                </li>
+                                <% }); %>
+                                    <% } else { %>
+                                        <li>محتوى عشوائي على يوتيوب</li>
+                                        <li>لا يوجد مسار واضح</li>
+                                        <li>لا تعلم كيف تعرض أعمالك</li>
+                                        <li>لا تعرف كيف تجذب عملاء</li>
+                                        <% } %>
+                    </ul>
+                </div>
+
+                <!-- After Card -->
+                <div class="glass-card comparison-card after">
+                    <div class="spotlight"></div>
+                    <div class="comparison-icon">✅</div>
+                    <h3 class="comparison-title">
+                        <%= data.beforeAfter?.after?.title || 'بعد الكورس' %>
+                    </h3>
+                    <ul class="comparison-list">
+                        <% if (data.beforeAfter?.after?.points) { %>
+                            <% data.beforeAfter.after.points.forEach(function(point) { %>
+                                <li>
+                                    <%= point %>
+                                </li>
+                                <% }); %>
+                                    <% } else { %>
+                                        <li>خطة واضحة خطوة بخطوة</li>
+                                        <li>مهارات مونتاج احترافية</li>
+                                        <li>بورتفوليو جاهز</li>
+                                        <li>معرفة كاملة بكيفية الحصول على عملاء High Ticket</li>
+                                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section section animate-on-scroll" id="benefits">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🎁 ماذا ستحصل عليه</span>
+                <h2 class="section-title">
+                    <%= data.benefits?.title || 'مميزات الاشتراك' %>
+                </h2>
+                <p class="section-subtitle">
+                    <%= data.benefits?.subtitle || 'رحلة تدريبية مكثفة لمدة شهر تشمل:' %>
+                </p>
+            </div>
+            <div class="benefits-grid">
+                <% if (data.benefits?.items) { %>
+                    <% data.benefits.items.forEach(function(item, index) { %>
+                        <div class="glass-card benefit-item">
+                            <div class="spotlight"></div>
+                            <div class="benefit-icon">✓</div>
+                            <span class="benefit-text">
+                                <%= item %>
+                            </span>
+                        </div>
+                        <% }); %>
+                            <% } else { %>
+                                <div class="glass-card benefit-item">
+                                    <div class="spotlight"></div>
+                                    <div class="benefit-icon">✓</div>
+                                    <span class="benefit-text">تعلم المونتاج من الصفر حتى الاحتراف الكامل</span>
+                                </div>
+                                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum-section section animate-on-scroll" id="curriculum">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📚 محتوى الكورس</span>
+                <h2 class="section-title">
+                    <%= data.curriculum?.title || 'ماذا ستتعلم؟' %>
+                </h2>
+            </div>
+            <div class="accordion">
+                <% if (data.curriculum?.modules) { %>
+                    <% data.curriculum.modules.forEach(function(module, index) { %>
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>
+                                    <%= module.title %>
+                                </span>
+                                <span class="accordion-icon">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <div class="module-info">
+                                        <span class="module-stat">📹 <%= module.videosCount %> فيديو</span>
+                                        <span class="module-stat">⏱ <%= module.duration %></span>
+                                    </div>
+                                    <ul class="module-topics">
+                                        <% module.topics.forEach(function(topic) { %>
+                                            <li>
+                                                <%= topic %>
+                                            </li>
+                                            <% }); %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                            <% } else { %>
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span>أساسيات Adobe Premiere Pro</span>
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <div class="module-info">
+                                                <span class="module-stat">📹 30 فيديو</span>
+                                                <span class="module-stat">⏱ 15 ساعة و28 دقيقة</span>
+                                            </div>
+                                            <ul class="module-topics">
+                                                <li>واجهة البرنامج</li>
+                                                <li>التايم لاين</li>
+                                                <li>القص الاحترافي</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+            </div>
+            <p class="section-subtitle mt-8" style="opacity: 0.6;">📌 <%= data.curriculum?.updateNote
+                    || 'يتم تحديث المحتوى باستمرار دون رسوم إضافية' %>
+            </p>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee-section section animate-on-scroll" id="guarantee">
+        <div class="container">
+            <div class="glass-card guarantee-card">
+                <div class="spotlight"></div>
+                <div class="guarantee-icon">🛡️</div>
+                <h2 class="guarantee-title">
+                    <%= data.guarantee?.title || 'ضمان 100%' %>
+                </h2>
+                <p class="guarantee-subtitle">
+                    <%= data.guarantee?.subtitle || 'إذا شعرت أن الكورس لا يناسبك' %>
+                </p>
+                <ul class="guarantee-list">
+                    <% if (data.guarantee?.points) { %>
+                        <% data.guarantee.points.forEach(function(point) { %>
+                            <li>
+                                <%= point %>
+                            </li>
+                            <% }); %>
+                                <% } else { %>
+                                    <li>استرجاع كامل المبلغ</li>
+                                    <li>خلال أول 24 ساعة</li>
+                                    <li>بدون أي أسئلة</li>
+                                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section animate-on-scroll" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">❓ أسئلة شائعة</span>
+                <h2 class="section-title">لديك سؤال؟</h2>
+            </div>
+            <div class="accordion">
+                <% if (data.faq && data.faq.length> 0) { %>
+                    <% data.faq.forEach(function(item, index) { %>
+                        <div class="accordion-item">
+                            <button class="accordion-header" onclick="toggleAccordion(this)">
+                                <span>
+                                    <%= item.question %>
+                                </span>
+                                <span class="accordion-icon">▼</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-body">
+                                    <p style="color: var(--text-secondary);">
+                                        <%= item.answer %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                            <% } else { %>
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span>هل أحتاج خبرة سابقة؟</span>
+                                        <span class="accordion-icon">▼</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            <p style="color: var(--text-secondary);">لا، الكورس يبدأ من الصفر تمامًا.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section section animate-on-scroll" id="pricing">
+        <div class="glass-card final-cta-content">
+            <div class="spotlight"></div>
+            <h2 class="final-cta-title"><span class="highlight">
+                    <%= data.finalCta?.title || 'مستعد تبدأ رحلتك؟' %>
+                </span></h2>
+            <p class="final-cta-subtitle">
+                <%= data.finalCta?.subtitle || 'لا تضيع الفرصة' %>
+            </p>
+            <div class="final-cta-highlight">
+                <%= data.finalCta?.highlight || 'خصم 50% – مقاعد محدودة' %>
+            </div>
+            <a href="<%= data.finalCta?.link || '#' %>" class="btn-primary">
+                🚀 <%= data.finalCta?.buttonText || 'احجز مكانك الآن' %>
+            </a>
+            <span class="btn-subtext">
+                <%= data.finalCta?.buttonSubtext || 'يبدأ اشتراكك فور الدفع' %>
+            </span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Arab Motion Academy. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Notifications -->
+    <div class="notification-container" id="notification-container"></div>
+
+    <!-- Mute Button -->
+    <button class="mute-btn" id="mute-btn" title="كتم الصوت">
+        🔔
+    </button>
+
+    <!-- Notification Sound -->
+    <audio id="notification-sound" preload="auto">
+        <source
+            src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleAYAQpXa35V6AwQ/ldjep3wBBUea3OKjfAYFQ5ra4J54BQVDm9vlonwGBkOY2+SifAYGQ5jb5KJ8BgZDmNvkonwGBkOY2+SifAYGQ5jb5KJ8BgZDmNvkonwGBkOY2+SifAYAAABMSVNUGgAAAElORk9JU0ZUDQAAAExhdmY1OC43Ni4xMDAA"
+            type="audio/wav">
+    </audio>
+
+    <!-- Pass data to JavaScript FIRST -->
+    <script>
+        window.siteData = <% - JSON.stringify(data || {}) %>;
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

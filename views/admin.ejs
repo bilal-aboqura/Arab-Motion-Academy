@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Arab Motion Academy</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        @import url('/css/styles.css');
+
+        body {
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #0F0F23 0%, #1a1a2e 100%);
+            color: #fff;
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .admin-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #F97316, #EC4899, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .admin-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .admin-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #F97316;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #F97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .btn-save {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #F97316, #EC4899);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-save:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .save-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(34, 197, 94, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: bold;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.error {
+            background: rgba(239, 68, 68, 0.9);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #F97316;
+        }
+
+        .list-editor {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .list-item input {
+            flex: 1;
+        }
+
+        .btn-remove {
+            padding: 8px 12px;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            color: #EF4444;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-remove:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-add {
+            padding: 10px 20px;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 6px;
+            color: #22C55E;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-add:hover {
+            background: rgba(34, 197, 94, 0.3);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #F97316;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: rgba(249, 115, 22, 0.2);
+            border-color: #F97316;
+            color: #F97316;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <a href="/" class="back-link">
+            ← العودة للصفحة الرئيسية
+        </a>
+
+        <header class="admin-header">
+            <h1 class="admin-title">🎛️ لوحة التحكم</h1>
+            <p class="admin-subtitle">Arab Motion Academy - إدارة المحتوى</p>
+        </header>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="general">⚙️ عام</button>
+            <button class="tab-btn" data-tab="hero">🏠 البطل</button>
+            <button class="tab-btn" data-tab="discount">🎯 الخصم</button>
+            <button class="tab-btn" data-tab="benefits">🎁 المميزات</button>
+            <button class="tab-btn" data-tab="curriculum">📚 المحتوى</button>
+            <button class="tab-btn" data-tab="faq">❓ الأسئلة</button>
+            <button class="tab-btn" data-tab="cta">🚀 CTA</button>
+        </div>
+
+        <form id="admin-form">
+            <!-- General Settings -->
+            <div class="tab-content active" id="tab-general">
+                <div class="admin-card">
+                    <h2 class="card-title">⚙️ إعدادات الموقع</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">عنوان الموقع</label>
+                            <input type="text" name="site.title" class="form-input"
+                                value="<%= data.site?.title || 'Arab Motion Academy' %>">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">وصف الموقع</label>
+                            <input type="text" name="site.description" class="form-input"
+                                value="<%= data.site?.description || '' %>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h2 class="card-title">📊 الإحصائيات</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">عدد الطلاب</label>
+                            <input type="number" name="stats.students" class="form-input"
+                                value="<%= data.stats?.students || 100 %>">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">نص الطلاب</label>
+                            <input type="text" name="stats.studentsText" class="form-input"
+                                value="<%= data.stats?.studentsText || 'طالب انضموا للكورس' %>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="tab-content" id="tab-hero">
+                <div class="admin-card">
+                    <h2 class="card-title">🏠 قسم البطل (Hero)</h2>
+                    <div class="form-group">
+                        <label class="form-label">العنوان الرئيسي</label>
+                        <input type="text" name="hero.headline" class="form-input"
+                            value="<%= data.hero?.headline || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">العنوان الفرعي</label>
+                        <input type="text" name="hero.subHeadline" class="form-input"
+                            value="<%= data.hero?.subHeadline || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">الوصف</label>
+                        <textarea name="hero.description"
+                            class="form-textarea"><%= data.hero?.description || '' %></textarea>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">نص زر CTA</label>
+                            <input type="text" name="hero.ctaText" class="form-input"
+                                value="<%= data.hero?.ctaText || 'احجز مكانك الآن' %>">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">رابط CTA</label>
+                            <input type="text" name="hero.ctaLink" class="form-input"
+                                value="<%= data.hero?.ctaLink || '#pricing' %>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h2 class="card-title">🎥 قسم الفيديو</h2>
+                    <div class="form-group">
+                        <label class="form-label">عنوان الفيديو</label>
+                        <input type="text" name="video.title" class="form-input" value="<%= data.video?.title || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">رابط الفيديو (YouTube Embed)</label>
+                        <input type="text" name="video.videoUrl" class="form-input"
+                            value="<%= data.video?.videoUrl || '' %>">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discount Section -->
+            <div class="tab-content" id="tab-discount">
+                <div class="admin-card">
+                    <h2 class="card-title">🎯 إعدادات الخصم</h2>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" name="discount.active" id="discount-active" <%=data.discount?.active
+                            ? 'checked' : '' %>>
+                        <label for="discount-active">تفعيل الخصم</label>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">نسبة الخصم (%)</label>
+                            <input type="number" name="discount.percentage" class="form-input"
+                                value="<%= data.discount?.percentage || 50 %>">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">عدد المقاعد المحدودة</label>
+                            <input type="number" name="discount.limitedSeats" class="form-input"
+                                value="<%= data.discount?.limitedSeats || 20 %>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">تاريخ انتهاء الخصم</label>
+                        <input type="datetime-local" name="discount.endDate" class="form-input"
+                            value="<%= data.discount?.endDate ? data.discount.endDate.slice(0, 16) : '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">نص الخصم</label>
+                        <input type="text" name="discount.text" class="form-input"
+                            value="<%= data.discount?.text || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">نص انتهاء الخصم</label>
+                        <input type="text" name="discount.expiredText" class="form-input"
+                            value="<%= data.discount?.expiredText || '' %>">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="tab-content" id="tab-benefits">
+                <div class="admin-card">
+                    <h2 class="card-title">🎁 المميزات</h2>
+                    <div class="form-group">
+                        <label class="form-label">عنوان القسم</label>
+                        <input type="text" name="benefits.title" class="form-input"
+                            value="<%= data.benefits?.title || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">العنوان الفرعي</label>
+                        <input type="text" name="benefits.subtitle" class="form-input"
+                            value="<%= data.benefits?.subtitle || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">قائمة المميزات (واحدة في كل سطر)</label>
+                        <textarea name="benefits.items" class="form-textarea"
+                            rows="15"><% if (data.benefits?.items) { %><%= data.benefits.items.join('\n') %><% } %></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curriculum Section -->
+            <div class="tab-content" id="tab-curriculum">
+                <div class="admin-card">
+                    <h2 class="card-title">📚 محتوى الكورس</h2>
+                    <div class="form-group">
+                        <label class="form-label">عنوان القسم</label>
+                        <input type="text" name="curriculum.title" class="form-input"
+                            value="<%= data.curriculum?.title || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">ملاحظة التحديث</label>
+                        <input type="text" name="curriculum.updateNote" class="form-input"
+                            value="<%= data.curriculum?.updateNote || '' %>">
+                    </div>
+                    <p style="color: rgba(255,255,255,0.5); margin-top: 10px;">
+                        لتعديل الموديولات، قم بتحرير ملف data.json مباشرة
+                    </p>
+                </div>
+
+                <div class="admin-card">
+                    <h2 class="card-title">🛡️ الضمان</h2>
+                    <div class="form-group">
+                        <label class="form-label">عنوان الضمان</label>
+                        <input type="text" name="guarantee.title" class="form-input"
+                            value="<%= data.guarantee?.title || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">العنوان الفرعي</label>
+                        <input type="text" name="guarantee.subtitle" class="form-input"
+                            value="<%= data.guarantee?.subtitle || '' %>">
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="tab-content" id="tab-faq">
+                <div class="admin-card">
+                    <h2 class="card-title">❓ الأسئلة الشائعة</h2>
+                    <div id="faq-editor">
+                        <% if (data.faq && data.faq.length> 0) { %>
+                            <% data.faq.forEach(function(item, index) { %>
+                                <div class="list-editor" style="margin-bottom: 15px;">
+                                    <div class="form-group">
+                                        <label class="form-label">السؤال</label>
+                                        <input type="text" name="faq[<%= index %>].question" class="form-input"
+                                            value="<%= item.question %>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">الإجابة</label>
+                                        <textarea name="faq[<%= index %>].answer"
+                                            class="form-textarea"><%= item.answer %></textarea>
+                                    </div>
+                                </div>
+                                <% }); %>
+                                    <% } %>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.5); margin-top: 10px;">
+                        لإضافة أسئلة جديدة، قم بتحرير ملف data.json مباشرة
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="tab-content" id="tab-cta">
+                <div class="admin-card">
+                    <h2 class="card-title">🚀 قسم CTA النهائي</h2>
+                    <div class="form-group">
+                        <label class="form-label">العنوان</label>
+                        <input type="text" name="finalCta.title" class="form-input"
+                            value="<%= data.finalCta?.title || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">العنوان الفرعي</label>
+                        <input type="text" name="finalCta.subtitle" class="form-input"
+                            value="<%= data.finalCta?.subtitle || '' %>">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">النص المميز</label>
+                        <input type="text" name="finalCta.highlight" class="form-input"
+                            value="<%= data.finalCta?.highlight || '' %>">
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">نص الزر</label>
+                            <input type="text" name="finalCta.buttonText" class="form-input"
+                                value="<%= data.finalCta?.buttonText || '' %>">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">رابط الزر</label>
+                            <input type="text" name="finalCta.link" class="form-input"
+                                value="<%= data.finalCta?.link || '' %>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <h2 class="card-title">🔔 الإشعارات</h2>
+                    <div class="form-group">
+                        <label class="form-label">رسائل الإشعارات (واحدة في كل سطر)</label>
+                        <textarea name="notifications" class="form-textarea"
+                            rows="5"><% if (data.notifications) { %><%= data.notifications.join('\n') %><% } %></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="save-section">
+                <button type="submit" class="btn-save" id="save-btn">
+                    💾 حفظ التغييرات
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Tab Switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active from all tabs
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                // Add active to clicked tab
+                btn.classList.add('active');
+                document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Form Submission
+        document.getElementById('admin-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const saveBtn = document.getElementById('save-btn');
+
+            // Build nested object from form data
+            const data = {};
+
+            for (let [key, value] of formData.entries()) {
+                // Handle nested keys like "hero.headline"
+                const keys = key.replace(/\[(\d+)\]/g, '.$1').split('.');
+                let current = data;
+
+                for (let i = 0; i < keys.length - 1; i++) {
+                    const k = keys[i];
+                    if (!current[k]) {
+                        // Check if next key is a number for array
+                        current[k] = isNaN(keys[i + 1]) ? {} : [];
+                    }
+                    current = current[k];
+                }
+
+                current[keys[keys.length - 1]] = value;
+            }
+
+            // Handle checkboxes
+            data.discount = data.discount || {};
+            data.discount.active = form.querySelector('[name="discount.active"]').checked;
+
+            // Handle array fields
+            if (data.benefits?.items && typeof data.benefits.items === 'string') {
+                data.benefits.items = data.benefits.items.split('\n').filter(item => item.trim());
+            }
+
+            if (data.notifications && typeof data.notifications === 'string') {
+                data.notifications = data.notifications.split('\n').filter(item => item.trim());
+            }
+
+            // Handle FAQ array
+            if (data.faq) {
+                const faqArray = [];
+                Object.keys(data.faq).forEach(index => {
+                    if (data.faq[index].question && data.faq[index].answer) {
+                        faqArray.push(data.faq[index]);
+                    }
+                });
+                data.faq = faqArray;
+            }
+
+            saveBtn.disabled = true;
+            saveBtn.textContent = '⏳ جاري الحفظ...';
+
+            try {
+                const response = await fetch('/admin/update', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                showToast(result.message, result.success);
+            } catch (error) {
+                showToast('حدث خطأ في الاتصال', false);
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.textContent = '💾 حفظ التغييرات';
+            }
+        });
+
+        function showToast(message, success = true) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast' + (success ? '' : ' error');
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
