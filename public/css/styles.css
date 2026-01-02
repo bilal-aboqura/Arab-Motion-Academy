@@ -2143,6 +2143,11 @@ footer {
     }
 
     /* Benefits */
+    .benefits-grid {
+        max-width: none;
+        margin: 0;
+    }
+
     .benefit-icon {
         width: 80px;
         height: 80px;
@@ -2373,6 +2378,11 @@ footer {
     }
 
     /* Benefits */
+    .benefits-grid {
+        max-width: none;
+        margin: 0;
+    }
+
     .benefit-icon {
         width: 100px;
         height: 100px;
