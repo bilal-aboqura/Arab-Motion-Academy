@@ -2016,9 +2016,9 @@ footer {
    ========================================================================== */
 @media (min-width: 2560px) {
 
-    /* Base font size increase - 115% */
+    /* Base font size increase - 110% */
     html {
-        font-size: 115%;
+        font-size: 110%;
     }
 
     /* Hero Section */
@@ -2029,6 +2029,11 @@ footer {
     .hero-wrapper {
         max-width: 2400px;
         gap: 120px;
+        margin: 0 auto;
+    }
+
+    .hero-content {
+        text-align: right;
     }
 
     .hero-headline {
@@ -2236,9 +2241,9 @@ footer {
    ========================================================================== */
 @media (min-width: 3840px) {
 
-    /* Base font size increase - 120% */
+    /* Base font size increase - 112% */
     html {
-        font-size: 120%;
+        font-size: 112%;
     }
 
     /* Hero Section */
@@ -2249,6 +2254,11 @@ footer {
     .hero-wrapper {
         max-width: 3200px;
         gap: 180px;
+        margin: 0 auto;
+    }
+
+    .hero-content {
+        text-align: right;
     }
 
     .hero-headline {
