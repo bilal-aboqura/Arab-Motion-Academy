@@ -740,18 +740,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 20px rgba(15, 205, 241, 0.5)) drop-shadow(0 0 40px rgba(0, 134, 225, 0.4)) drop-shadow(0 0 60px rgba(15, 205, 241, 0.3));
-    animation: headlineGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes headlineGlow {
-    0% {
-        filter: drop-shadow(0 0 20px rgba(15, 205, 241, 0.5)) drop-shadow(0 0 40px rgba(0, 134, 225, 0.4));
-    }
-
-    100% {
-        filter: drop-shadow(0 0 30px rgba(15, 205, 241, 0.7)) drop-shadow(0 0 60px rgba(0, 134, 225, 0.5)) drop-shadow(0 0 80px rgba(15, 205, 241, 0.4));
-    }
 }
 
 .hero-subheadline {
