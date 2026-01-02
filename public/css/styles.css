@@ -2016,9 +2016,9 @@ footer {
    ========================================================================== */
 @media (min-width: 2560px) {
 
-    /* Base font size increase - 130% */
+    /* Base font size increase - 115% */
     html {
-        font-size: 130%;
+        font-size: 115%;
     }
 
     /* Hero Section */
@@ -2236,9 +2236,9 @@ footer {
    ========================================================================== */
 @media (min-width: 3840px) {
 
-    /* Base font size increase - 130% */
+    /* Base font size increase - 120% */
     html {
-        font-size: 130%;
+        font-size: 120%;
     }
 
     /* Hero Section */
